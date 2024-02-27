@@ -76,6 +76,10 @@ stockCodeDescription_Frequent = max_count_rows[['StockCode', 'Description']]
 df = fillDescription(df,stockCode,stockCodeDescription_Frequent)
 
 
+missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
+df.drop(missingDescr_rows , inplace=True)
+
+
 #fill unitPrice
 
 ```  
