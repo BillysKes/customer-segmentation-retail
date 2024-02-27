@@ -46,4 +46,16 @@ def fillcustomerid(df, invoiceNo_tobeFilled):
         customerid = customerid+1
     return df
 
+
+#fill Description values
+missingDescr_rows=df.loc[df['Description'].isna()]
+stockcode_rowsToEdit = missingDescr_rows.groupby('StockCode')['StockCode'].value_counts().reset_index(name='count')
+xx = df.groupby(['StockCode','Description'])['Description'].value_counts().reset_index(name='count')
+xx_sorted = xx.sort_values(by=['StockCode','count'], ascending=[True,False])
+max_count_rows = xx_sorted.groupby('StockCode').first().reset_index()
+stockCodeDescription_Frequent = max_count_rows[['StockCode', 'Description']]
+
+
+#fill unitPrice
+
 ```  
