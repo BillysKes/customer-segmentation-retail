@@ -39,12 +39,19 @@ sorted_x = x.sort_values(by='f' ,ascending=False)
 
 
 # fill nan CustomerID values for every invoiceNo id
+
 def fillcustomerid(df, invoiceNo_tobeFilled):
     customerid = max(df['CustomerID'])+1
     for ind in invoiceNo_tobeFilled:
         df.loc[df['InvoiceNo'] == ind, 'CustomerID'] = customerid
         customerid = customerid+1
     return df
+
+nanCustomer_rows=df.loc[df['CustomerID'].isna()]
+x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='f')
+sorted_x = x.sort_values(by='f' ,ascending=False)
+invoiceNo_tobeFilled = x['InvoiceNo']
+df = fillcustomerid(df, invoiceNo_tobeFilled)
 
 
 #fill Description values
