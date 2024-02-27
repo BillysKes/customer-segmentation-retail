@@ -58,7 +58,12 @@ df = fillcustomerid(df, invoiceNo_tobeFilled)
 
 def fillDescription(df,stockCode,stockCodeDescription_Frequent):
     for ind in stockCode:
-        df.loc[(df['StockCode'] == ind) & (df['Description'].isna()), 'Description'] = stockCodeDescription_Frequent.loc[stockCodeDescription_Frequent['StockCode'] == ind, 'Description'].to_string(index=False)
+        descr = stockCodeDescription_Frequent.loc[
+            stockCodeDescription_Frequent['StockCode'] == ind, 'Description']
+        if descr.empty:
+            continue
+        descr = descr.iloc[0]
+        df.loc[(df['StockCode'] == ind) & (df['Description'].isna()), 'Description'] = descr
     return df
 
 
