@@ -38,8 +38,71 @@ delete from onlineretail
 	where UnitPrice=0 and Quantity>0
 
 
-
-
-
 select CustomerID,Country,count(*) from onlineretail
 group by CustomerID,Country
+
+
+
+#
+select count(*) from onlineretail
+where UnitPrice=38970.00;
+
+select avg(UnitPrice) from onlineretail
+where StockCode='M' and UnitPrice!=38970.00
+
+
+
+#  spot duplicate rows
+select InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country,count(*)
+from onlineretail
+group by InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country
+having count(*)>1
+
+
+#  remove duplicate rows
+DELETE FROM onlineretail
+WHERE (InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country) IN (
+    SELECT InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country
+    FROM (
+        SELECT InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country,
+               ROW_NUMBER() OVER (PARTITION BY InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country) AS rn
+        FROM onlineretail
+    ) AS subquery
+    WHERE rn > 1
+);
+
+
+#  spotting the outliers in UnitPrice
+
+SELECT *
+FROM onlineretail
+WHERE ABS(UnitPrice - (SELECT AVG(UnitPrice) FROM onlineretail)) > (SELECT 2 * STDDEV(UnitPrice) FROM onlineretail);
+
+
+
+
+SELECT *
+FROM onlineretail
+WHERE ABS(Quantity - (SELECT AVG(Quantity) FROM onlineretail)) > (SELECT 2 * STDDEV(Quantity) FROM onlineretail);
+
+
+---------------------------------------
+##  exploratory data analysis (EDA)
+
+
+
+
+
+#  rows discounts 
+select * from onlineretail
+where Description='Discount';
+
+
+#  number of transactions for each customer who have discount coupons
+select CustomerID,count(*) as num_of_transactions
+from onlineretail 
+where Description!='Discount' and CustomerID in 
+(select distinct CustomerID from onlineretail
+where Description='Discount' )
+group by CustomerID
+order by num_of_transactions desc
