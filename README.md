@@ -9,8 +9,10 @@
    2. [RFM Segmentation](#rfm-segmentation)
    3. [RFM Distribution Analysis](#rfm-distribution)
 4. [Clustering Algorithm](clustering-algorithm)
-5. [Model evaluation](model-evaluation)
-
+   1. [K-means]
+   2. [Selecting the Number of Clusters (k)]
+      1. [Elbow Method]
+   3. [Silhouette Score]
 
 ## Data cleaning
 
