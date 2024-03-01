@@ -26,7 +26,7 @@ This project aims to leverage RFM analysis coupled with the k-means clustering a
 
 ## 1.2 Dataset Description
 
-The dataset is about online transactions made by customers for a UK registered online retail company. All the transactions occurred between 01/12/2010 and 09/12/2011. You can find more information about the dataset here : [https://www.kaggle.com/datasets/tunguz/online-retail/data]
+The dataset stores information about online transactions made by customers for a UK registered online retail company. All the transactions occurred between 01/12/2010 and 09/12/2011. You can find more information about the dataset here : https://www.kaggle.com/datasets/tunguz/online-retail/data
 
 
 
