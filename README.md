@@ -24,6 +24,11 @@ In the realm of retail analytics, understanding customer behavior is pivotal for
 This project aims to leverage RFM analysis coupled with the k-means clustering algorithm to segment customers within an online transactional retail dataset. By employing RFM analysis, we can extract valuable insights regarding customer engagement and purchasing behavior. The k-means clustering algorithm, a popular unsupervised learning technique, will enable us to group customers with similar RFM characteristics into distinct segments.
 
 
+## 1.2 Dataset Description
+
+The dataset is about online transactions made by customers for a UK registered online retail company. All the transactions occurred between 01/12/2010 and 09/12/2011. You can find more information about the dataset here : [https://www.kaggle.com/datasets/tunguz/online-retail/data]
+
+
 
 
 
