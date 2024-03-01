@@ -1,6 +1,6 @@
 # Table of Contents
 1. [Introduction]
-1. [Project Overview](#project-overview)
+   1. [Project Overview](#project-overview)
 
 2. [Dataset Description](#dataset-description)
 3. [Statistical Information](#statistical-information)
