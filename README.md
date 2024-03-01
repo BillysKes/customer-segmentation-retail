@@ -1,8 +1,7 @@
 # Table of Contents
 1. [Introduction](#Introduction)
    1. [Project Overview](#project-overview)
-   2. [Business Problem and Objectives](#Business-Problem)
-   3. [Dataset Description](#dataset-description)
+   2. [Dataset Description](#dataset-description)
 2. [Data Preparation and Cleaning](#data-cleaning)
 3. [RFM Analysis](#rfm-analysis)
    1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
@@ -18,11 +17,14 @@
 
 
 # 1. Introduction
+In the realm of retail analytics, understanding customer behavior is pivotal for strategic decision-making and targeted marketing initiatives. Customer segmentation techniques provide a structured approach to categorize customers into distinct groups based on their purchasing patterns, preferences, and overall engagement with the brand. One such powerful method is Recency, Frequency, Monetary (RFM) analysis, which evaluates customers based on the recency of their last purchase, the frequency of purchases, and the monetary value of transactions.
 
 ## 1.1 Project Overview
 
+This project aims to leverage RFM analysis coupled with the k-means clustering algorithm to segment customers within an online transactional retail dataset. By employing RFM analysis, we can extract valuable insights regarding customer engagement and purchasing behavior. The k-means clustering algorithm, a popular unsupervised learning technique, will enable us to group customers with similar RFM characteristics into distinct segments.
 
-## 1.2 Business Problem and Objectives
+
+
 
 
 ## Data cleaning
