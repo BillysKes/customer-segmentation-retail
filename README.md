@@ -1,16 +1,15 @@
 # Table of Contents
 1. [Introduction]
-1.1
-    [Project Overview](#project-overview)
+1. [Project Overview](#project-overview)
 
-3. [Dataset Description](#dataset-description)
-4. [Statistical Information](#statistical-information)
-5. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+2. [Dataset Description](#dataset-description)
+3. [Statistical Information](#statistical-information)
+4. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
    1. [Bar-Pie Charts](#Bar-Pie-Charts)
    2. [Scatter Plots](#Scatter-Plots)
    3. [Histograms](#Histograms)
-6. [Predictive modelling](predictive-modelling)
-7. [Model evaluation](model-evaluation)
+5. [Predictive modelling](predictive-modelling)
+6. [Model evaluation](model-evaluation)
 
 
 
