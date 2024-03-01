@@ -1,15 +1,15 @@
 # Table of Contents
-1. [Introduction]
-1. [Project Overview](#project-overview)
-
-2. [Dataset Description](#dataset-description)
-3. [Statistical Information](#statistical-information)
-4. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-   1. [Bar-Pie Charts](#Bar-Pie-Charts)
-   2. [Scatter Plots](#Scatter-Plots)
-   3. [Histograms](#Histograms)
-5. [Predictive modelling](predictive-modelling)
-6. [Model evaluation](model-evaluation)
+1. [Introduction](#Introduction)
+   1. [Project Overview](#project-overview)
+   2. [Business Problem and Objectives](#Business-Problem)
+   3. [Dataset Description](#dataset-description)
+2. [Data Preparation and Cleaning](#data-cleaning)
+3. [RFM Analysis](#rfm-analysis)
+   1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
+   2. [RFM Segmentation](#rfm-segmentation)
+   3. [RFM Distribution Analysis](#rfm-distribution)
+4. [Clustering Algorithm](clustering-algorithm)
+5. [Model evaluation](model-evaluation)
 
 
 
