@@ -8,12 +8,18 @@
    1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
    2. [RFM Segmentation](#rfm-segmentation)
    3. [RFM Distribution Analysis](#rfm-distribution)
-4. [Clustering Algorithm](clustering-algorithm)
-   1. [K-means]
-   2. [Selecting the Number of Clusters (k)]
-      1. [Elbow Method]
-   3. [Silhouette Score]
+4. [Clustering Algorithm](#clustering-algorithm)
+   1. [K-means](#k-means)
+   2. [Selecting the Number of Clusters (k)](#number-of-clusters)
+      1. [Elbow Method](#elbow-method)
+   3. [Silhouette Score](#silhouette-score)
 
+
+
+
+# 1. Introduction
+
+## 1.1 Project Overview
 ## Data cleaning
 
 ```  
