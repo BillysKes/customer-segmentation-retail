@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import seaborn as sb
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
-
+from sklearn.metrics import silhouette_score
 
 df = pd.read_csv('C:\\Users\\vasil\\Downloads\onlineretailRFMvaluesTable.csv')
 
@@ -52,15 +52,48 @@ plt.ylabel("SSE")
 plt.show()
 
 #instantiate the k-means class, using optimal number of clusters
-kmeans = KMeans(init="random", n_clusters=3, n_init=10, random_state=1)
+kmeans = KMeans(init="random", n_clusters=4, n_init=10, random_state=1)
 
 #fit k-means algorithm to data
 kmeans.fit(scaled_df)
 
 #view cluster assignments for each observation
-df['cluster'] = kmeans.labels_
+#df['cluster'] = kmeans.labels_
+scaled_df['cluster'] = kmeans.labels_
+#print("\n\n", df.nunique())  # statistics information
+#df.to_csv('C:\\Users\\vasil\\Downloads\\normalizedRFMclustering3.csv')
+silhouette_coefficient = silhouette_score(scaled_df, kmeans.labels_)
+print("Silhouette Coefficient:", silhouette_coefficient)
 
-print(df)
+#print(df)
+''''# Creating figure
+z = scaled_df['Monetary']
+x = scaled_df['Frequency']
+y = scaled_df['Recency']
+c = scaled_df['cluster']
+fig = plt.figure(figsize=(16, 9))
+ax = plt.axes(projection="3d")
+
+# Add x, y gridlines
+ax.grid(b=True, color='grey',
+        linestyle='-.', linewidth=0.3,
+        alpha=0.2)
+
+# Creating color map
+#my_cmap = plt.get_cmap('hsv')
+# Creating plot
+sctt = ax.scatter3D(x, y, z,
+                    alpha=0.8,
+                    c=c,
+
+                    marker='^')
+plt.title("simple 3D scatter plot")
+ax.set_xlabel('Frequency', fontweight='bold')
+ax.set_ylabel('Recency', fontweight='bold')
+ax.set_zlabel('Monetary', fontweight='bold')
+fig.colorbar(sctt, ax=ax, shrink=0.5, aspect=5)
+# show plot
+plt.show()'''
 #df.to_csv('C:\\Users\\vasil\\Downloads\\normalizedRFM.csv')
 
 
