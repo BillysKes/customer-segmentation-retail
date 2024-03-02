@@ -119,19 +119,6 @@ invoice_groups = df.groupby('InvoiceNo')['CustomerID'].apply(lambda x: x.isna().
 invoices_with_condition = invoice_groups[invoice_groups['CustomerID'] == True]['InvoiceNo'].tolist()
 print(invoices_with_condition) # empty
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
 df.drop(missingDescr_rows , inplace=True)
 
@@ -142,8 +129,82 @@ df.drop(missingDescr_rows , inplace=True)
 
 
 
+```  
+
+delete from onlineretail
+	where UnitPrice=0 and Quantity>0
+
+```  
 
 
+```  
+// spot duplicate rows
+select InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country,count(*)
+from onlineretail
+group by InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country
+having count(*)>1;
+
+//  remove duplicate rows
+DELETE FROM onlineretail
+WHERE (InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country) IN (
+    SELECT InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country
+    FROM (
+        SELECT InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country,
+               ROW_NUMBER() OVER (PARTITION BY InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country) AS rn
+        FROM onlineretail
+    ) AS subquery
+    WHERE rn > 1
+);
+```  
+
+```  
+// remove rows where the seller donates to CRUK, as this data is not useful for the customer segmentation
+delete from onlineretail
+where StockCode in ('CRUK','DOT','M','AMAZONFEE','BANK CHARGES','POST','S','C2','B','D');
+
+delete from onlineretail
+where StockCode like 'gift%';
+
+delete from onlineretail
+where Quantity<0 and  InvoiceNo not like 'C%';
+```
 
 
+```
+  //spotting the outliers in UnitPrice
 
+SELECT *
+FROM onlineretail
+WHERE ABS(UnitPrice - (SELECT AVG(UnitPrice) FROM onlineretail)) > (SELECT 2 * STDDEV(UnitPrice) FROM onlineretail);
+```
+
+
+```
+#  noticing data entry values of unit price for stockcode 22502
+select * from onlineretail
+where StockCode='22502'
+order by UnitPrice desc;
+
+UPDATE onlineretail
+SET Quantity = 60, UnitPrice= 10.82, Description='PICNIC BASKET WICKER SMALL'
+WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
+```
+
+
+# 4. RFM Analysis
+
+
+# 4.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
+```
+INSERT INTO customersrfm
+SELECT
+    CustomerID,
+    DATEDIFF('2011-12-09 12:50:00',MAX(InvoiceDate)) AS Recency,
+    COUNT(DISTINCT InvoiceNo) AS Frequency,
+    SUM(UnitPrice*Quantity) AS Monetary
+FROM
+    onlineretail
+where Quantity>0 and UnitPrice>0
+GROUP BY
+    CustomerID;
+```
