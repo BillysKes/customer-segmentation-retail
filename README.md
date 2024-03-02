@@ -202,7 +202,12 @@ where Quantity>0 and UnitPrice>0
 GROUP BY
     CustomerID;
 ```
+### Distributions
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/9907bb65-37af-4800-90c5-ddf0d1a6aa04)
+
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0a3091a2-79ac-4fec-9815-bdbf05abb809)
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/92284fc9-df87-4e31-8ba2-75b8bc43761d)
+
 
 ## 4.2 Selecting the number of clusters
 
