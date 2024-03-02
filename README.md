@@ -37,11 +37,16 @@ The dataset stores information about online transactions made by customers for a
 ## 2. Data Preparation and Cleaning
 
 # 2.1 Cleaning in python
+
+### Missing values
+
+
 ```  
 print('\ndata types : \n', df.dtypes)  # verifying that data types are all correct
 print('\nmissing values : \n', df.isna().sum())  # missing values detection
 print('\nduplicates :\n', df[df.duplicated()])  # duplicates detection
-
+```
+We notice that missing values exist for CustomerID(approximately a total 120k rows out of 540k rows ). Since we do not want to miss this information, which is more than 20% of the total data, we examine those rows through appropriate filtering, and we notice that the transaction ids(InvoiceNO) point to CustomerID.
 print(df.loc[ df['Description'].isnull() & df['CustomerID'].notnull()]) # every Description missing value has a CustomerID missing value
 print(df.loc[ df['Description'].isnull() & df['UnitPrice']!=0]) #every Description missing value has a UnitPrice missing value
 print(df.loc[ df['Description'].isnull() & ( df['UnitPrice']!=0 | df['CustomerID'].notnull()) ])
