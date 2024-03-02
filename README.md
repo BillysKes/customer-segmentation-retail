@@ -46,7 +46,30 @@ print('\ndata types : \n', df.dtypes)  # verifying that data types are all corre
 print('\nmissing values : \n', df.isna().sum())  # missing values detection
 print('\nduplicates :\n', df[df.duplicated()])  # duplicates detection
 ```
-We notice that missing values exist for CustomerID(approximately a total 120k rows out of 540k rows ). Since we do not want to miss this information, which is more than 20% of the total data, we examine those rows through appropriate filtering, and we notice that the transaction ids(InvoiceNO) point to CustomerID.
+We notice that missing values exist for CustomerID(approximately a total 130k rows out of 540k rows ). Since we do not want to miss this information, which is ≈25% of the total data, we examine those rows through appropriate filtering, and we notice that the transaction ids(InvoiceNO) do not point to CustomerID. So, CustomerID is completely unknown.
+
+```
+nanCustomer_rows=df.loc[df['CustomerID'].isna()]
+x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='count')
+print(x)
+```
+
+This output informs us that all these transactions made by unknown customers, have 3710 unique transaction ids. Since, every transactionID points to a unique customerID, we decide to create 3710 CustomerIDs. Hence, we manage to preserve all those 130k rows.
+
+# Creating customerIDs Function
+```
+// fill nan CustomerID values for every invoiceNo id
+
+def fillcustomerid(df, invoiceNo_tobeFilled):
+    customerid = max(df['CustomerID'])+1
+    for ind in invoiceNo_tobeFilled:
+        df.loc[df['InvoiceNo'] == ind, 'CustomerID'] = customerid
+        customerid = customerid+1
+    return df
+```
+
+
+```  
 print(df.loc[ df['Description'].isnull() & df['CustomerID'].notnull()]) # every Description missing value has a CustomerID missing value
 print(df.loc[ df['Description'].isnull() & df['UnitPrice']!=0]) #every Description missing value has a UnitPrice missing value
 print(df.loc[ df['Description'].isnull() & ( df['UnitPrice']!=0 | df['CustomerID'].notnull()) ])
@@ -69,14 +92,7 @@ x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_inde
 sorted_x = x.sort_values(by='f' ,ascending=False)
 
 
-# fill nan CustomerID values for every invoiceNo id
 
-def fillcustomerid(df, invoiceNo_tobeFilled):
-    customerid = max(df['CustomerID'])+1
-    for ind in invoiceNo_tobeFilled:
-        df.loc[df['InvoiceNo'] == ind, 'CustomerID'] = customerid
-        customerid = customerid+1
-    return df
 
 nanCustomer_rows=df.loc[df['CustomerID'].isna()]
 x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='f')
@@ -110,13 +126,14 @@ df = fillDescription(df,stockCode,stockCodeDescription_Frequent)
 missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
 df.drop(missingDescr_rows , inplace=True)
 
+
+```  
+
 # 2.2 Cleaning in sql
 
 
 
 
-
-```
 
 
 
