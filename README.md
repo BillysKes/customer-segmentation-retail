@@ -202,3 +202,13 @@ where Quantity>0 and UnitPrice>0
 GROUP BY
     CustomerID;
 ```
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/9907bb65-37af-4800-90c5-ddf0d1a6aa04)
+
+## 4.2 Selecting the number of clusters
+
+ ### The elbow method
+
+![elbowMethodClustering](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/d917ef7d-4f37-4c90-b479-52e016fba271)
+
+
+
