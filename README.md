@@ -194,7 +194,7 @@ WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
 # 4. RFM Analysis
 
 
-# 4.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
+## 4.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
 ```
 INSERT INTO customersrfm
 SELECT
