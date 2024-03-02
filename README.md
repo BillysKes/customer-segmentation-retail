@@ -46,7 +46,7 @@ print('\ndata types : \n', df.dtypes)  # verifying that data types are all corre
 print('\nmissing values : \n', df.isna().sum())  # missing values detection
 print('\nduplicates :\n', df[df.duplicated()])  # duplicates detection
 ```
-We notice that missing values exist for CustomerID(approximately a total 130k rows out of 540k rows ). Since we do not want to miss this information, which is ≈25% of the total data, we examine those rows through appropriate filtering, and we notice that the transaction ids(InvoiceNO) do not point to CustomerID. So, CustomerID is completely unknown.
+We notice that missing values exist for CustomerID(approximately a total 130k rows out of 540k rows ). Since we do not want to miss this information, which is ≈25% of the total data, we examine those rows through appropriate filtering, and we notice that the transaction ids(InvoiceNO) do not point to CustomerID. So, CustomerID is completely unknown. Missing values for Description also exist but we will handle them later.
 
 ```
 nanCustomer_rows=df.loc[df['CustomerID'].isna()]
@@ -56,7 +56,7 @@ print(x)
 
 This output informs us that all these transactions made by unknown customers, have 3710 unique transaction ids. Since, every transactionID points to a unique customerID, we decide to create 3710 CustomerIDs. Hence, we manage to preserve all those 130k rows.
 
-# Creating customerIDs Function
+### Function created to create new customerIDs
 ```
 // fill nan CustomerID values for every invoiceNo id
 
@@ -66,7 +66,47 @@ def fillcustomerid(df, invoiceNo_tobeFilled):
         df.loc[df['InvoiceNo'] == ind, 'CustomerID'] = customerid
         customerid = customerid+1
     return df
+
+
+nanCustomer_rows=df.loc[df['CustomerID'].isna()]
+x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='f')
+sorted_x = x.sort_values(by='f' ,ascending=False)
+invoiceNo_tobeFilled = x['InvoiceNo']
+df = fillcustomerid(df, invoiceNo_tobeFilled)
+
 ```
+
+
+
+
+
+### Function created to fill description
+```  
+//fill Description values
+
+def fillDescription(df,stockCode,stockCodeDescription_Frequent):
+    for ind in stockCode:
+        descr = stockCodeDescription_Frequent.loc[
+            stockCodeDescription_Frequent['StockCode'] == ind, 'Description']
+        if descr.empty:
+            continue
+        descr = descr.iloc[0]
+        df.loc[(df['StockCode'] == ind) & (df['Description'].isna()), 'Description'] = descr
+    return df
+
+
+missingDescr_rows=df.loc[df['Description'].isna()] //1454 rows
+stockcode_rowsToEdit = missingDescr_rows.groupby('StockCode')['StockCode'].value_counts().reset_index(name='count')
+filteredStockcodeAlldescr = df.groupby(['StockCode','Description'])['Description'].value_counts().reset_index(name='count')
+filteredStockcodeAlldescr = filteredStockcodeAlldescr.sort_values(by=['StockCode','count'], ascending=[True,False])
+max_count_rows = filteredStockcodeAlldescr.groupby('StockCode').first().reset_index()
+stockCodeDescription_Frequent = max_count_rows[['StockCode', 'Description']]
+stockCodeList=stockcode_rowsToEdit['StockCode'] // 960 products
+df = fillDescription(df,stockCodeList,stockCodeDescription_Frequent)
+
+```
+
+To fill the description for those rows, we search what is the description for those products(StockCode). However, many products have multiple different descriptions. So, we decide to find the most frequent description value for each of those products fill the missing values. stockCodeDescription_Frequent parameter stores the most frequent description for every product, while stockCodeList parameter stores the StockCodeIDs we want to fill the description for.
 
 
 ```  
@@ -80,47 +120,16 @@ invoices_with_condition = invoice_groups[invoice_groups['CustomerID'] == True]['
 print(invoices_with_condition) # empty
 
 
-filtered_df = df.groupby('StockCode')['Description'].apply(lambda x: x.isna().any() and x.str.isalpha().any()).reset_index()pandas sort
-# Extract InvoiceNo values that meet the condition
-stock_codes = filtered_df[filtered_df['Description'] == True]
-
-
-nanCustomer_rows=df.loc[df['CustomerID'].isna()]
-print(nanCustomer_rows)
-print(nanCustomer_rows['InvoiceNo'].nunique()) # 3710 unique invoiceNo values
-x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='f')
-sorted_x = x.sort_values(by='f' ,ascending=False)
 
 
 
 
-nanCustomer_rows=df.loc[df['CustomerID'].isna()]
-x = nanCustomer_rows.groupby('InvoiceNo')['InvoiceNo'].value_counts().reset_index(name='f')
-sorted_x = x.sort_values(by='f' ,ascending=False)
-invoiceNo_tobeFilled = x['InvoiceNo']
-df = fillcustomerid(df, invoiceNo_tobeFilled)
 
 
-#fill Description values
-
-def fillDescription(df,stockCode,stockCodeDescription_Frequent):
-    for ind in stockCode:
-        descr = stockCodeDescription_Frequent.loc[
-            stockCodeDescription_Frequent['StockCode'] == ind, 'Description']
-        if descr.empty:
-            continue
-        descr = descr.iloc[0]
-        df.loc[(df['StockCode'] == ind) & (df['Description'].isna()), 'Description'] = descr
-    return df
 
 
-missingDescr_rows=df.loc[df['Description'].isna()]
-stockcode_rowsToEdit = missingDescr_rows.groupby('StockCode')['StockCode'].value_counts().reset_index(name='count')
-xx = df.groupby(['StockCode','Description'])['Description'].value_counts().reset_index(name='count')
-xx_sorted = xx.sort_values(by=['StockCode','count'], ascending=[True,False])
-max_count_rows = xx_sorted.groupby('StockCode').first().reset_index()
-stockCodeDescription_Frequent = max_count_rows[['StockCode', 'Description']]
-df = fillDescription(df,stockCode,stockCodeDescription_Frequent)
+
+
 
 
 missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
