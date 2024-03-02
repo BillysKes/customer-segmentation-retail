@@ -110,20 +110,12 @@ To fill the description for those rows, we search what is the description for th
 
 
 ```  
-print(df.loc[ df['Description'].isnull() & df['CustomerID'].notnull()]) # every Description missing value has a CustomerID missing value
-print(df.loc[ df['Description'].isnull() & df['UnitPrice']!=0]) #every Description missing value has a UnitPrice missing value
-print(df.loc[ df['Description'].isnull() & ( df['UnitPrice']!=0 | df['CustomerID'].notnull()) ])
-
-
-invoice_groups = df.groupby('InvoiceNo')['CustomerID'].apply(lambda x: x.isna().any() and x.notna().any()).reset_index()
-invoices_with_condition = invoice_groups[invoice_groups['CustomerID'] == True]['InvoiceNo'].tolist()
-print(invoices_with_condition) # empty
-
 missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
 df.drop(missingDescr_rows , inplace=True)
 
+```
+The function didn't find any description to fill for some of the products, so we remove those rows.
 
-```  
 
 # 2.2 Cleaning in sql
 
@@ -137,7 +129,8 @@ delete from onlineretail
 ```  
 
 
-```  
+### Removing duplicate rows
+```
 // spot duplicate rows
 select InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, CustomerID,Country,count(*)
 from onlineretail
@@ -156,9 +149,8 @@ WHERE (InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, Custo
     WHERE rn > 1
 );
 ```  
-
+### Removing irrelevant rows
 ```  
-// remove rows where the seller donates to CRUK, as this data is not useful for the customer segmentation
 delete from onlineretail
 where StockCode in ('CRUK','DOT','M','AMAZONFEE','BANK CHARGES','POST','S','C2','B','D');
 
@@ -168,8 +160,10 @@ where StockCode like 'gift%';
 delete from onlineretail
 where Quantity<0 and  InvoiceNo not like 'C%';
 ```
+These data is not useful for customer segmentation puproses, so we remove them.
 
 
+### Outliers handling
 ```
   //spotting the outliers in UnitPrice
 
@@ -178,7 +172,7 @@ FROM onlineretail
 WHERE ABS(UnitPrice - (SELECT AVG(UnitPrice) FROM onlineretail)) > (SELECT 2 * STDDEV(UnitPrice) FROM onlineretail);
 ```
 
-
+### Data entry errors
 ```
 #  noticing data entry values of unit price for stockcode 22502
 select * from onlineretail
@@ -189,7 +183,7 @@ UPDATE onlineretail
 SET Quantity = 60, UnitPrice= 10.82, Description='PICNIC BASKET WICKER SMALL'
 WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
 ```
-
+UnitPrice should store the price value per unit, so we correct those entry errors.
 
 # 4. RFM Analysis
 
