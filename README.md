@@ -3,11 +3,13 @@
    1. [Project Overview](#project-overview)
    2. [Dataset Description](#dataset-description)
 2. [Data Preparation and Cleaning](#data-cleaning)
-3. [RFM Analysis](#rfm-analysis)
+   1. [Cleaning in python](#cleaning-python)
+   2. [Cleaning in sql](#cleaning-sql)
+4. [RFM Analysis](#rfm-analysis)
    1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
    2. [RFM Segmentation](#rfm-segmentation)
    3. [RFM Distribution Analysis](#rfm-distribution)
-4. [Clustering Algorithm](#clustering-algorithm)
+5. [Clustering Algorithm](#clustering-algorithm)
    1. [K-means](#k-means)
    2. [Selecting the Number of Clusters (k)](#number-of-clusters)
       1. [Elbow Method](#elbow-method)
@@ -32,8 +34,9 @@ The dataset stores information about online transactions made by customers for a
 
 
 
-## Data cleaning
+## 2. Data Preparation and Cleaning
 
+# 2.1 Cleaning in python
 ```  
 print('\ndata types : \n', df.dtypes)  # verifying that data types are all correct
 print('\nmissing values : \n', df.isna().sum())  # missing values detection
@@ -102,8 +105,11 @@ df = fillDescription(df,stockCode,stockCodeDescription_Frequent)
 missingDescr_rows=df[df['Description'].isna()].index  # 14 rows
 df.drop(missingDescr_rows , inplace=True)
 
+# 2.2 Cleaning in sql
 
-#fill unitPrice
+
+
+
 
 ```
 
