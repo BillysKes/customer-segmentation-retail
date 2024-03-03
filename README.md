@@ -5,13 +5,13 @@
 2. [Data Preparation and Cleaning](#data-cleaning)
    1. [Cleaning in python](#cleaning-python)
    2. [Cleaning in sql](#cleaning-sql)
-4. [RFM Analysis](#rfm-analysis)
+3. [RFM Analysis](#rfm-analysis)
    1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
    2. [RFM Distribution Analysis](#rfm-distribution)
-5. [Clustering Algorithm](#clustering-algorithm)
-   1. [K-means](#k-means)
-   2. [Selecting the Number of Clusters (k)](#number-of-clusters)
-      1. [Elbow Method](#elbow-method)
+4. [Clustering Algorithm](#clustering-algorithm)
+   1. [Selecting the Number of Clusters (k)](#number-of-clusters)
+   	1. [Elbow Method](#elbow-method)
+   2. [K-means](#k-means)
    3. [Silhouette Score](#silhouette-score)
 
 
