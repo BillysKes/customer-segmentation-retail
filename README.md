@@ -207,6 +207,8 @@ GROUP BY
 80% of the customers made less than 5 transactions while 12% made between 5-10 transactions. The rest 8%(≈400 customers) have made at least 10 transactions.
 
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8e785c87-edff-46b8-94d5-803442c3d995)
+
+The high majority of customers have spent less than 7700£.
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
 
 
