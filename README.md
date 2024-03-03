@@ -202,10 +202,10 @@ GROUP BY
     CustomerID;
 ```
 ### Distributions
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/9907bb65-37af-4800-90c5-ddf0d1a6aa04)
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/b56cbad7-6cd5-43a1-868a-1fa2553fd06f)
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/3491160b-613a-4a57-a8b6-67e68ec2ee8c)
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
 
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0a3091a2-79ac-4fec-9815-bdbf05abb809)
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/92284fc9-df87-4e31-8ba2-75b8bc43761d)
 
 # 4. Clustering Algorithm
 
