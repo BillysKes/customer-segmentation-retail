@@ -203,7 +203,7 @@ GROUP BY
 ```
 ### Distributions
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/b56cbad7-6cd5-43a1-868a-1fa2553fd06f)
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/3491160b-613a-4a57-a8b6-67e68ec2ee8c)
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8e785c87-edff-46b8-94d5-803442c3d995)
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
 
 
