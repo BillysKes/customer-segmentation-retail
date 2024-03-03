@@ -211,7 +211,7 @@ GROUP BY
 The high majority of customers have spent less than 7700£.
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
 
-
+The majority of customers made a purchase recently
 # 4. Clustering Algorithm
 
 ## 4.1 Selecting the number of clusters
