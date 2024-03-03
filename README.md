@@ -184,10 +184,10 @@ WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
 ```
 UnitPrice should store the price value per unit, so we correct those entry errors.
 
-# 4. RFM Analysis
+# 3. RFM Analysis
 
 
-## 4.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
+## 3.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
 ```
 INSERT INTO customersrfm
 SELECT
@@ -207,8 +207,9 @@ GROUP BY
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0a3091a2-79ac-4fec-9815-bdbf05abb809)
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/92284fc9-df87-4e31-8ba2-75b8bc43761d)
 
+# 4. Clustering Algorithm
 
-## 4.2 Selecting the number of clusters
+## 4.1 Selecting the number of clusters
 
  ### The elbow method
 
@@ -216,3 +217,4 @@ GROUP BY
 
 
 
+## 4.3 K-means
