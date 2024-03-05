@@ -260,6 +260,8 @@ kmeans.fit(scaled_df)
 labels=kmeans.labels_
 df['cluster'] = labels
 ```
+Features are normalized with the MinMax Scaler before performing k-means clustering
+
 
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0989f3b5-37ac-4568-aaf0-eda807f0fe8a)
 
