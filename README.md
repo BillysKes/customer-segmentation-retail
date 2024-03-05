@@ -224,3 +224,11 @@ The majority of customers made a purchase recently
 
 
 ## 4.3 K-means
+
+![avgRecencybycluster](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/edb72a30-a7dc-441f-ba67-5f1c0711d31b)
+![avgMonetarybycluster](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/5b77739e-5c2a-409d-850f-b8d8bdda5610)
+
+![avgFrequencybycluster](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/bb20fcf5-36a8-4054-baea-d5c5a4ccb79b)
+
+
+
