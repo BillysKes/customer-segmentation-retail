@@ -10,7 +10,6 @@
    2. [RFM Distribution Analysis](#rfm-distribution)
 4. [Clustering Algorithm](#clustering-algorithm)
    1. [Selecting the Number of Clusters (k)](#number-of-clusters)
-   	1. [Elbow Method](#elbow-method)
    2. [K-means](#k-means)
 
 
