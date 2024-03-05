@@ -7,7 +7,8 @@
    2. [Cleaning in sql](#cleaning-sql)
 3. [RFM Analysis](#rfm-analysis)
    1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
-   2. [RFM Distribution Analysis](#rfm-distribution)
+   2. [Outlier treatment](#rfm-outliers)
+   3. [RFM Distribution Analysis](#rfm-distribution)
 4. [Clustering Algorithm](#clustering-algorithm)
    1. [Selecting the Number of Clusters (k)](#number-of-clusters)
    2. [K-means](#k-means)
@@ -205,7 +206,18 @@ GROUP BY
 ```
 This query inserts into a new table the rfm values for every customer. We consider starting the rfm analysis from the date of the last transaction , so recency calculates how many days passed since that date. Frequency counts the number of transactions made by the customer and monetary calculates the amount of money spent on the company.
 
-### Distributions
+## Outlier treatment
+
+Outliers on Frequency and Monetary was handled appropriately so we could make more clear interpretations for their distributions. We choose the winsorization method because we want to retain as much information as possible.
+```
+WinsorizedArray = winsorize(df['Frequency],(0.02,0.02))
+df['Frequency']=WinsorizedArray
+WinsorizedArray = winsorize(df['Monetary],(0.02,0.02))
+df['Monetary']=WinsorizedArray
+```
+The top 2% of data is replaced by the value of the data at the 98th percentile while the values of the bottom 2% are replaced by the value of the data at the 2th percentile
+
+## 3.3 Distributions
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8fd19baa-319a-4405-a26f-b8c169f939a5)
 
 80% of the customers made less than 5 transactions while 12% made between 5-10 transactions. The rest 8%(≈400 customers) have made at least 10 transactions.
