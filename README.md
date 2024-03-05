@@ -218,9 +218,7 @@ df['Monetary']=WinsorizedArray
 The top 2% of data is replaced by the value of the data at the 98th percentile while the values of the bottom 2% are replaced by the value of the data at the 2th percentile
 
 ## 3.3 Distributions
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8fd19baa-319a-4405-a26f-b8c169f939a5)
 
-80% of the customers made less than 5 transactions while 12% made between 5-10 transactions. The rest 8%(≈400 customers) have made at least 10 transactions.
 ![frequencyDistr](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/25084bbf-4509-44d9-9269-766839629172)
 
 
