@@ -249,6 +249,8 @@ The point after which the distortion starts decreasing in a almost linear way is
 
 ## 4.3 K-means
 
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0989f3b5-37ac-4568-aaf0-eda807f0fe8a)
+
 
 ![avgRFMbycluster](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8d4b67d7-d563-4849-b295-6750fa0a6c0e)
 
