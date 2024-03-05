@@ -184,7 +184,10 @@ WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
 UnitPrice should store the price value per unit, so we correct those entry errors.
 
 # 3. RFM Analysis
-
+In RFM analysis, the segmentation of customers is done by calculating for every customer the following factors : 
+- Recency - How recently did the customer purchase?
+- Frequency – How often do they purchase?
+- Monetary Value – How much do they spend?
 
 ## 3.1 Recency, Frequency, and Monetary (RFM) Scores Calculation
 ```
