@@ -12,8 +12,7 @@
 4. [Clustering Algorithm](#clustering-algorithm)
    1. [Selecting the Number of Clusters (k)](#number-of-clusters)
    2. [K-means](#k-means)
-
-
+5. [Conclusions](#conclusions)
 
 
 
@@ -249,7 +248,7 @@ The point after which the distortion starts decreasing in a almost linear way is
 
 ## 4.3 K-means
 
-# Model implementation
+### Model implementation
 ```
 x = df.drop('CustomerID',axis=1)
 x=x.values
@@ -265,5 +264,19 @@ df['cluster'] = labels
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0989f3b5-37ac-4568-aaf0-eda807f0fe8a)
 
 
+
 ![avgRFMbycluster](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8d4b67d7-d563-4849-b295-6750fa0a6c0e)
 
+## 5. Conclusions
+Obverving those graphs, we make some realizations about the results of the customer segments.
+
+### Cluster 2
+They have spent the most money for the company. Those customers also are the most frequent buyers compared the other customer segments and they also made a purchase more recently compared to the other segments. We can label them as the best and most valuable customers of the company.
+
+### Cluster 0
+They have spent two times more than cluster 1 but less than cluster 2, by far. They are not frequent buyers but on average they have two times higher frequency compared to cluster 1. Last time they made a purchase was on average 50 days ago.
+
+
+### Cluster 1
+
+They spend the least money and they are on average one time buyers. Last time they made a purchase was on average 8 and a half months ago.
