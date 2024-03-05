@@ -237,11 +237,14 @@ A significant portion of customers made a purchase relatively recently(past 2 an
 In clustering analysis, an algorithm is used to group sets of objects into different categories. In our case, we use a clustering algorithm to divide customers into groups based on their rfm values, which we described in the previous section. The algorithm we decide to use and build our model is called k-means clustering. 
 ## 4.1 Selecting the number of clusters
 
+The elbow method is one of the ways that can help us determine what is the optimal number of clusters to divide our customers in our retail business scenario.
+
  ### The elbow method
 
 
-
 ![elbowNEW](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/cf09caea-5a14-4ac4-aa44-8d148d32f4e5)
+
+The point after which the distortion starts decreasing in a almost linear way is at 3.So, the optimal number of clusters for the data is 3.
 
 
 ## 4.3 K-means
