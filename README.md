@@ -205,6 +205,8 @@ GROUP BY
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8fd19baa-319a-4405-a26f-b8c169f939a5)
 
 80% of the customers made less than 5 transactions while 12% made between 5-10 transactions. The rest 8%(≈400 customers) have made at least 10 transactions.
+![frequencyDistr](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/25084bbf-4509-44d9-9269-766839629172)
+
 
 ![monetaryDistr](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/63d3cfb6-bc89-4b33-ad91-bd7b3194009d)
 
