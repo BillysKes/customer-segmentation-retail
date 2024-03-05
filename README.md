@@ -12,7 +12,7 @@
    1. [Selecting the Number of Clusters (k)](#number-of-clusters)
    	1. [Elbow Method](#elbow-method)
    2. [K-means](#k-means)
-   3. [Silhouette Score](#silhouette-score)
+
 
 
 
