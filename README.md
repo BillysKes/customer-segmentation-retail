@@ -234,7 +234,7 @@ Right-skewed distribution. The high majority of customers spend less than 1000£
 A significant portion of customers made a purchase relatively recently(past 2 and a half months)
 
 # 4. Clustering Algorithm
-
+In clustering analysis, an algorithm is used to group sets of objects into different categories. In our case, we use a clustering algorithm to divide customers into groups based on their rfm values, which we described in the previous section. The algorithm we decide to use and build our model is called k-means clustering. 
 ## 4.1 Selecting the number of clusters
 
  ### The elbow method
