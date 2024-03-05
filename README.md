@@ -219,8 +219,9 @@ The majority of customers made a purchase recently
 
  ### The elbow method
 
-![elbowMethodClustering](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/d917ef7d-4f37-4c90-b479-52e016fba271)
 
+
+![elbowNEW](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/cf09caea-5a14-4ac4-aa44-8d148d32f4e5)
 
 
 ## 4.3 K-means
