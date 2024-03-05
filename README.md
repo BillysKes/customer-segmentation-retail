@@ -203,6 +203,8 @@ where Quantity>0 and UnitPrice>0
 GROUP BY
     CustomerID;
 ```
+This query inserts into a new table the rfm values for every customer. We consider starting the rfm analysis from the date of the last transaction , so recency calculates how many days passed since that date. Frequency counts the number of transactions made by the customer and monetary calculates the amount of money spent on the company.
+
 ### Distributions
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/8fd19baa-319a-4405-a26f-b8c169f939a5)
 
