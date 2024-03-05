@@ -228,8 +228,9 @@ Right-skewed distribution. The high majority of customers are not frequent buyer
 Right-skewed distribution. The high majority of customers spend less than 1000£
 
 
-![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
-* bin size = 15
+![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/885f83ed-70a2-4786-882c-be415d5d7ca8)
+
+
 A significant portion of customers made a purchase relatively recently(past 2 and a half months)
 
 # 4. Clustering Algorithm
