@@ -221,11 +221,13 @@ The top 2% of data is replaced by the value of the data at the 98th percentile w
 
 ![frequencyDistr](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/25084bbf-4509-44d9-9269-766839629172)
 
+Right-skewed distribution. The high majority of customers are not frequent buyers.
 
 ![monetaryDistr](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/63d3cfb6-bc89-4b33-ad91-bd7b3194009d)
 
+Right-skewed distribution. The high majority of customers spend less than 1000£
 
-Due to the presence of outliers, we decide to winsorize the monetary variable, quantile(0.02,0.02) as a boundary.
+
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/36c86628-1654-449b-bbb8-ee1aa0818890)
 
 The majority of customers made a purchase recently
