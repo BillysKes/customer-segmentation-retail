@@ -249,6 +249,19 @@ The point after which the distortion starts decreasing in a almost linear way is
 
 ## 4.3 K-means
 
+# Model implementation
+```
+x = df.drop('CustomerID',axis=1)
+x=x.values
+min_max_scaler = preprocessing.MinMaxScaler()
+x_scaled = min_max_scaler.fit_transform(x)
+scaled_df = pd.DataFrame(x_scaled,columns=['Recency','Frequency','Monetary'])
+kmeans = KMeans(n_clusters=3, init='k-means++', n_init='auto', max_iter=300)
+kmeans.fit(scaled_df)
+labels=kmeans.labels_
+df['cluster'] = labels
+```
+
 ![image](https://github.com/BillysKes/customer-segmentation-retail/assets/73298709/0989f3b5-37ac-4568-aaf0-eda807f0fe8a)
 
 
