@@ -72,6 +72,11 @@ WHERE (InvoiceNo, StockCode,Description, Quantity, InvoiceDate, UnitPrice, Custo
 );
 
 
+# remove rows where the seller donates to CRUK, as this data is not useful for the customer segmentation
+delete from onlineretail
+where StockCode in ('CRUK','DOT','M','AMAZONFEE','BANK CHARGES','POST','S','C2','B','D');
+
+
 #  spotting the outliers in UnitPrice
 
 SELECT *
@@ -80,10 +85,39 @@ WHERE ABS(UnitPrice - (SELECT AVG(UnitPrice) FROM onlineretail)) > (SELECT 2 * S
 
 
 
+#  noticing data entry values of unit price for stockcode 22502
+select * from onlineretail
+where StockCode='22502'
+order by UnitPrice desc;
+
+UPDATE onlineretail
+SET Quantity = 60, UnitPrice= 10.82, Description='PICNIC BASKET WICKER SMALL'
+WHERE Description = 'PICNIC BASKET WICKER 60 PIECES';
+
+
+delete from onlineretail
+where StockCode like 'gift%';
+
+
+
+select * from onlineretail
+where UnitPrice=0;
+
+select count(distinct StockCode) from onlineretail
+where UnitPrice=0;
+
+
+delete from onlineretail
+where Quantity<0 and  InvoiceNo not like 'C%';
+
+
 
 SELECT *
 FROM onlineretail
 WHERE ABS(Quantity - (SELECT AVG(Quantity) FROM onlineretail)) > (SELECT 2 * STDDEV(Quantity) FROM onlineretail);
+
+
+
 
 
 ---------------------------------------
@@ -93,16 +127,29 @@ WHERE ABS(Quantity - (SELECT AVG(Quantity) FROM onlineretail)) > (SELECT 2 * STD
 
 
 
-#  rows discounts 
-select * from onlineretail
-where Description='Discount';
+SELECT
+    CustomerID,
+    DATEDIFF('2011-12-09 12:50:00',MAX(InvoiceDate)) AS Recency,
+    COUNT(DISTINCT InvoiceNo) AS Frequency,
+    SUM(UnitPrice*Quantity) AS Monetary
+FROM
+    onlineretail
+where Quantity>0 and UnitPrice>0
+GROUP BY
+    CustomerID;
 
 
-#  number of transactions for each customer who have discount coupons
-select CustomerID,count(*) as num_of_transactions
-from onlineretail 
-where Description!='Discount' and CustomerID in 
-(select distinct CustomerID from onlineretail
-where Description='Discount' )
-group by CustomerID
-order by num_of_transactions desc
+
+INSERT INTO customersrfm
+SELECT
+    CustomerID,
+    DATEDIFF('2011-12-09 12:50:00',MAX(InvoiceDate)) AS Recency,
+    COUNT(DISTINCT InvoiceNo) AS Frequency,
+    SUM(UnitPrice*Quantity) AS Monetary
+FROM
+    onlineretail
+where Quantity>0 and UnitPrice>0
+GROUP BY
+    CustomerID;
+
+
