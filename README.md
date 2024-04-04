@@ -1,17 +1,11 @@
 # Table of Contents
 1. [Introduction](#Introduction)
-   1. [Project Overview](#project-overview)
-   2. [Dataset Description](#dataset-description)
-2. [Data Preparation and Cleaning](#data-cleaning)
-   1. [Cleaning in python](#cleaning-python)
-   2. [Cleaning in sql](#cleaning-sql)
-3. [RFM Analysis](#rfm-analysis)
-   1. [Recency, Frequency, and Monetary (RFM) Scores Calculation](#rfm-scores)
-   2. [Outlier treatment](#rfm-outliers)
-   3. [RFM Distribution Analysis](#rfm-distribution)
-4. [Clustering Algorithm](#clustering-algorithm)
-   1. [Selecting the Number of Clusters (k)](#number-of-clusters)
-   2. [K-means](#k-means)
+2. [Dataset Description](#dataset-description)
+3. [Exploratory Data Analysis (EDA)](#eda)
+   1. [Descriptive Statistics](#cleaning-python)
+   2. [Visualization of Data](#cleaning-sql)
+   3. [Feature Engineering](#feature-eng)
+4. [Model selection](#)
 5. [Conclusions](#conclusions)
 
 
