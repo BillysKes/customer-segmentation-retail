@@ -1,7 +1,5 @@
 
 
-from sklearn import preprocessing
-from sklearn.cluster import KMeans
 import pandas as pd
 from matplotlib import pyplot as plt
 
