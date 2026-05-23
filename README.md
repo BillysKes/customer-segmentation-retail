@@ -54,7 +54,7 @@ print(x)
 
 This output informs us that all these transactions made by unknown customers, have 3710 unique transaction ids. Since, every transactionID points to a unique customerID, we decide to create 3710 CustomerIDs. Hence, we manage to preserve all those 130k rows.
 
-### Function created to create new customerIDs
+### Function created to generate new customerIDs
 ```
 // fill nan CustomerID values for every invoiceNo id
 
